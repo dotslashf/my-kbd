@@ -6,15 +6,19 @@ import { Spacer } from "./Spacer";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
 import { StateType } from "@/store";
+import useConfig from "@/hooks/useConfig";
+import { KeyboardKeys } from "@/const";
 
 export interface IKeyboardProps {}
 
 export function Keyboard(props: IKeyboardProps) {
   const color = useSelector((state: StateType) => state.color["keyPrimary"]);
+  const colors = useSelector((state: StateType) => state.color);
   const backgroundColor = useSelector(
     (state: StateType) => state.color["background"]
   );
   const textColor = useSelector((state: StateType) => state.color["text"]);
+  const { hashMapKeyAndColor } = useConfig();
 
   return (
     <div
@@ -27,7 +31,7 @@ export function Keyboard(props: IKeyboardProps) {
         <Key
           character={"Escape"}
           key={"Escape"}
-          color={color}
+          color={hashMapKeyAndColor["Escape"] ?? color}
           textColor={textColor}
         />
         <Spacer size={4} />
@@ -35,7 +39,7 @@ export function Keyboard(props: IKeyboardProps) {
           return (
             <Key
               character={char}
-              color={color}
+              color={hashMapKeyAndColor[char] ?? color}
               key={`${char}-${uuidv4()}`}
               textColor={textColor}
             />
@@ -46,7 +50,7 @@ export function Keyboard(props: IKeyboardProps) {
           return (
             <Key
               character={char}
-              color={color}
+              color={hashMapKeyAndColor[char] ?? color}
               key={`${char}-${uuidv4()}`}
               textColor={textColor}
             />
@@ -57,7 +61,7 @@ export function Keyboard(props: IKeyboardProps) {
           return (
             <Key
               character={char}
-              color={color}
+              color={hashMapKeyAndColor[char] ?? color}
               key={`${char}-${uuidv4()}`}
               textColor={textColor}
             />
@@ -68,7 +72,7 @@ export function Keyboard(props: IKeyboardProps) {
           return (
             <Key
               character={char}
-              color={color}
+              color={hashMapKeyAndColor[char] ?? color}
               key={`${char}-${uuidv4()}`}
               textColor={textColor}
             />

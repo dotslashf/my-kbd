@@ -18,7 +18,7 @@ const colorSlice = createSlice({
   name: 'color',
   initialState: {
     keyPrimary: '#E2E8F0',
-    keySecondary: '#EDF2F7',
+    keySecondary: '#7AA4E3',
     text: '#1A202C',
     background: '#1F2937',
   },
@@ -38,13 +38,13 @@ const keyMapSlice = createSlice({
   name: 'keyMap',
   initialState: {
     keyMap: {
-      "primary": [
+      "keySecondary": [
         "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]",
-        // "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'",
-        // "z", "x", "c", "v", "b", "n", "m", ",", ".", "/",
+        "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'",
+        "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/",
       ],
     },
-    currentGroup: "primary",
+    currentGroup: "keySecondary",
     isEditing: false,
   } as ConfigState,
   reducers: {

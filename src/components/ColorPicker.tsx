@@ -48,7 +48,7 @@ const ColorPicker = (props: Props) => {
             }
           }}
           onChange={(e) => {
-            props.setColor(e.target.value);
+            props.setColor(e.target.value.toUpperCase());
           }}
         />
       </div>
@@ -57,7 +57,7 @@ const ColorPicker = (props: Props) => {
           <HexColorPicker
             color={props.color}
             onChange={(value) => {
-              props.setColor(value);
+              props.setColor(value.toUpperCase());
             }}
           />
         </div>
