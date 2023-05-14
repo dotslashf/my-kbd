@@ -1,3 +1,4 @@
+import useColor from "@/hooks/useColor";
 import React, { useEffect, useRef } from "react";
 import { HexColorPicker } from "react-colorful";
 

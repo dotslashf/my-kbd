@@ -1,30 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorPicker from "./ColorPicker";
 import useColor from "@/hooks/useColor";
 import useConfig from "@/hooks/useConfig";
 
 export default function Disclosure() {
-  const { color, setColor } = useColor("keyPrimary");
-  const { color: backgroundColor, setColor: setBackgroundColor } =
-    useColor("background");
-  const { color: textColor, setColor: setTextColor } = useColor("text");
-  const { color: colorSecondary, setColor: setColorSecondary } =
-    useColor("keySecondary");
   const { isEditing, toggleEditing } = useConfig();
 
-  const [disclosures, setDisclosures] = useState([
+  const disclosureData = [
     {
       id: "disclosure-panel-1",
       isOpen: false,
       buttonText: "Colors",
-      panelContent: (
-        <>
-          <ColorPicker color={color} setColor={setColor} />
-          <ColorPicker color={backgroundColor} setColor={setBackgroundColor} />
-          <ColorPicker color={textColor} setColor={setTextColor} />
-          <ColorPicker color={colorSecondary} setColor={setColorSecondary} />
-        </>
-      ),
+      panelContent: <ContentPanel />,
     },
     {
       id: "disclosure-panel-2",
@@ -51,7 +38,9 @@ export default function Disclosure() {
         </>
       ),
     },
-  ]);
+  ];
+
+  const [disclosures, setDisclosures] = useState(disclosureData);
 
   const handleClick = (id: string) => {
     setDisclosures(
@@ -83,5 +72,23 @@ export default function Disclosure() {
         ))}
       </div>
     </div>
+  );
+}
+
+function ContentPanel() {
+  const { color, setColor } = useColor("keyPrimary");
+  const { color: backgroundColor, setColor: setBackgroundColor } =
+    useColor("background");
+  const { color: textColor, setColor: setTextColor } = useColor("text");
+  const { color: colorSecondary, setColor: setColorSecondary } =
+    useColor("keySecondary");
+
+  return (
+    <>
+      <ColorPicker color={color} setColor={setColor} />
+      <ColorPicker color={backgroundColor} setColor={setBackgroundColor} />
+      <ColorPicker color={textColor} setColor={setTextColor} />
+      <ColorPicker color={colorSecondary} setColor={setColorSecondary} />
+    </>
   );
 }

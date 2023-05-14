@@ -1,12 +1,14 @@
 import * as React from "react";
 import Keyboard from "./Keyboard";
 import Disclosure from "./Disclosure";
+import useColor from "@/hooks/useColor";
 
 export interface ILayoutProps {}
 
 export function Layout(props: ILayoutProps) {
   return (
     <div className="flex">
+      {/* sidebar */}
       <div
         className={`flex top-0 left-0 z-40 w-96 h-screen p-4
         overflow-y-auto transition-transform bg-white`}
@@ -44,6 +46,7 @@ export function Layout(props: ILayoutProps) {
           </div>
         </div>
       </div>
+      {/* content */}
       <main className="flex min-h-screen flex-col items-center justify-center p-8 w-full bg-gradient-to-bl from-sky-400 to-blue-500">
         <Keyboard />
       </main>
