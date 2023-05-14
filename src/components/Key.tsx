@@ -32,7 +32,7 @@ export function Key(props: IKeyProps) {
   const isWithShiftChar = KeyboardKeyMap[props.character].withShiftChar !== "";
   return (
     <span
-      className={`bg-slate-200 overflow-hidden rounded-md grow text-sm flex flex-col items-center justify-center shrink-0 gap-y-4 font-bold font-mono shadow-md border-b-4 border-sky-600 hover:border-slate-200 hover:cursor-pointer transition ${
+      className={`bg-slate-200 overflow-hidden rounded-sm grow text-sm flex flex-col items-center justify-center shrink-0 gap-y-4 font-bold font-mono shadow-md border-2 border-b-8 border-l-4 border-r-4 border-gray-700 border-opacity-30 hover:cursor-pointer transition ${
         gridColumnSpan === 1 ? "aspect-square" : ""
       } `}
       style={{
