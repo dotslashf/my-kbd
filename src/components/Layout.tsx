@@ -14,7 +14,6 @@ export function Layout(props: ILayoutProps) {
       <HexColorPicker
         color={color}
         onChange={(value) => {
-          console.log(value);
           dispatch(changeColor(value));
         }}
       />

@@ -3,6 +3,7 @@ import * as React from "react";
 
 export interface IKeyProps {
   character: KeyboardKey;
+  color?: string;
 }
 
 function calculateAspectRatio(keyboardKey: KeyboardKey) {
@@ -37,6 +38,7 @@ export function Key(props: IKeyProps) {
       style={{
         gridColumn: `span ${gridColumnSpan * 4} / span ${gridColumnSpan * 4}`,
         gap: `${isWithShiftChar ? "0.25rem" : "0"}`,
+        backgroundColor: `${props.color ? props.color : "bg-slate-200"}`,
       }}
     >
       {isWithShiftChar && (
