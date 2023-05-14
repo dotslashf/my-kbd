@@ -17,24 +17,9 @@ export function Layout(props: ILayoutProps) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-20 w-full bg-gradient-to-bl from-sky-400 to-blue-500">
       <div className="flex">
-        <ColorPicker
-          color={color}
-          setColor={setColor}
-          isColorPickerOpen={isColorPickerOpen}
-          setIsColorPickerOpen={setIsColorPickerOpen}
-        />
-        <ColorPicker
-          color={backgroundColor}
-          setColor={setBackgroundColor}
-          isColorPickerOpen={isColorPickerOpen}
-          setIsColorPickerOpen={setIsColorPickerOpen}
-        />
-        <ColorPicker
-          color={textColor}
-          setColor={setTextColor}
-          isColorPickerOpen={isColorPickerOpen}
-          setIsColorPickerOpen={setIsColorPickerOpen}
-        />
+        <ColorPicker color={color} setColor={setColor} />
+        <ColorPicker color={backgroundColor} setColor={setBackgroundColor} />
+        <ColorPicker color={textColor} setColor={setTextColor} />
       </div>
       <Keyboard />
     </main>
