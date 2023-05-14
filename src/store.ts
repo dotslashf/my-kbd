@@ -3,7 +3,7 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 const counterSlice = createSlice({
   name: 'color',
   initialState: {
-    hex: 'rgb(226 232 240 / var(--tw-bg-opacity))'
+    hex: '#e2e8f0'
   },
   reducers: {
     changeColor: (state, action) => {
