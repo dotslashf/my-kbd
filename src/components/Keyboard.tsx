@@ -7,13 +7,11 @@ import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
 import { StateType } from "@/store";
 import useConfig from "@/hooks/useConfig";
-import { KeyboardKeys } from "@/const";
 
 export interface IKeyboardProps {}
 
 export function Keyboard(props: IKeyboardProps) {
   const color = useSelector((state: StateType) => state.color["keyPrimary"]);
-  const colors = useSelector((state: StateType) => state.color);
   const backgroundColor = useSelector(
     (state: StateType) => state.color["background"]
   );
@@ -22,7 +20,7 @@ export function Keyboard(props: IKeyboardProps) {
 
   return (
     <div
-      className="flex flex-col gap-6 w-9/12 p-4 rounded-lg shadow-2xl"
+      className="flex flex-col gap-6 w-9/12 pr-4 pt-4 pl-4 pb-5 rounded-lg shadow-2xl border-b-[12px] border-gray-700 border-opacity-30"
       style={{
         backgroundColor: `${backgroundColor}`,
       }}

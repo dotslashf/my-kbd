@@ -13,7 +13,9 @@ export function Layout(props: ILayoutProps) {
   const { color: backgroundColor, setColor: setBackgroundColor } =
     useColor("background");
   const { color: textColor, setColor: setTextColor } = useColor("text");
-  const keyMap = useSelector((state: StateType) => state.keyMap.keyMap);
+  const { color: colorSecondary, setColor: setColorSecondary } =
+    useColor("keySecondary");
+
   const { isEditing, toggleEditing } = useConfig();
 
   return (
@@ -38,8 +40,8 @@ export function Layout(props: ILayoutProps) {
         <ColorPicker color={color} setColor={setColor} />
         <ColorPicker color={backgroundColor} setColor={setBackgroundColor} />
         <ColorPicker color={textColor} setColor={setTextColor} />
+        <ColorPicker color={colorSecondary} setColor={setColorSecondary} />
       </div>
-      <div className="flex">{JSON.stringify(keyMap)}</div>
       <Keyboard />
     </main>
   );
