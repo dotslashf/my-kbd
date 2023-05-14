@@ -1,13 +1,13 @@
+import React from "react";
 import { HexColorPicker } from "react-colorful";
 
 interface Props {
   color: string;
   setColor: (color: string) => void;
-  isColorPickerOpen: boolean;
-  setIsColorPickerOpen: (state: boolean) => void;
 }
 
 const ColorPicker = (props: Props) => {
+  const [isColorPickerOpen, setIsColorPickerOpen] = React.useState(false);
   return (
     <div className="mb-8">
       <div className="flex h-12">
@@ -15,7 +15,7 @@ const ColorPicker = (props: Props) => {
           className="h-full flex-shrink-0 w-12 border-slate-800 border-l border-t border-b rounded-l-md"
           style={{ backgroundColor: props.color }}
           onClick={() => {
-            props.setIsColorPickerOpen(!props.isColorPickerOpen);
+            setIsColorPickerOpen(!isColorPickerOpen);
           }}
         ></div>
         <input
@@ -34,7 +34,7 @@ const ColorPicker = (props: Props) => {
           }}
         />
       </div>
-      {props.isColorPickerOpen && (
+      {isColorPickerOpen && (
         <div className="absolute">
           <HexColorPicker
             color={props.color}

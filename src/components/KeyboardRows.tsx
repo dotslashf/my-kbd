@@ -5,11 +5,13 @@ import { Spacer } from "./Spacer";
 import { KeyboardKey, KeyboardTKLMapping } from "@/const";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
+import { ColorState } from "@/store";
 
 export interface IKeyboardRowsProps {}
 
 export function KeyboardRows(props: IKeyboardRowsProps) {
-  const color = useSelector((state) => state.color.hex);
+  const color = useSelector((state: ColorState) => state.color["key"]);
+  const textColor = useSelector((state: ColorState) => state.color["text"]);
   return (
     <div className="flex flex-col gap-y-2">
       {/* first row */}
@@ -19,6 +21,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
@@ -29,6 +32,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
@@ -41,6 +45,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
@@ -51,6 +56,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
@@ -63,6 +69,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
@@ -75,13 +82,19 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
         })}
         <Spacer size={4} />
         <Spacer size={1} />
-        <Key character={"ArrowUp"} color={color} key={"Up"} />;
+        <Key
+          character={"ArrowUp"}
+          color={color}
+          textColor={textColor}
+          key={"Up"}
+        />
       </KeyboardRow>
       {/* last row */}
       <KeyboardRow>
@@ -90,6 +103,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
@@ -100,6 +114,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
             <Key
               character={char as KeyboardKey}
               color={color}
+              textColor={textColor}
               key={`${char}-${uuidv4()}`}
             />
           );
