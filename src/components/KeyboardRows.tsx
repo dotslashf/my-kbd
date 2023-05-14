@@ -5,13 +5,13 @@ import { Spacer } from "./Spacer";
 import { KeyboardKey, KeyboardTKLMapping } from "@/const";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
-import { ColorState } from "@/store";
+import { StateType } from "@/store";
 
 export interface IKeyboardRowsProps {}
 
 export function KeyboardRows(props: IKeyboardRowsProps) {
-  const color = useSelector((state: ColorState) => state.color["key"]);
-  const textColor = useSelector((state: ColorState) => state.color["text"]);
+  const color = useSelector((state: StateType) => state.color["keyPrimary"]);
+  const textColor = useSelector((state: StateType) => state.color["text"]);
   return (
     <div className="flex flex-col gap-y-2">
       {/* first row */}

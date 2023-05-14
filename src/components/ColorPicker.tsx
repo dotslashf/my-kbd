@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { HexColorPicker } from "react-colorful";
 
 interface Props {
@@ -8,8 +8,26 @@ interface Props {
 
 const ColorPicker = (props: Props) => {
   const [isColorPickerOpen, setIsColorPickerOpen] = React.useState(false);
+  const colorPickerRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: { target: any }) => {
+    if (
+      colorPickerRef.current &&
+      !colorPickerRef.current.contains(event.target)
+    ) {
+      setIsColorPickerOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="mb-8">
+    <div className="mb-8" ref={colorPickerRef}>
       <div className="flex h-12">
         <div
           className="h-full flex-shrink-0 w-12 border-slate-800 border-l border-t border-b rounded-l-md"

@@ -5,16 +5,16 @@ import Key from "./Key";
 import { Spacer } from "./Spacer";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
-import { ColorState } from "@/store";
+import { StateType } from "@/store";
 
 export interface IKeyboardProps {}
 
 export function Keyboard(props: IKeyboardProps) {
-  const color = useSelector((state: ColorState) => state.color["key"]);
+  const color = useSelector((state: StateType) => state.color["keyPrimary"]);
   const backgroundColor = useSelector(
-    (state: ColorState) => state.color["background"]
+    (state: StateType) => state.color["background"]
   );
-  const textColor = useSelector((state: ColorState) => state.color["text"]);
+  const textColor = useSelector((state: StateType) => state.color["text"]);
 
   return (
     <div

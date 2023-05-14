@@ -1,4 +1,5 @@
 import { KeyboardKey, KeyboardKeyMap } from "@/const";
+import useConfig from "@/hooks/useConfig";
 import * as React from "react";
 
 export interface IKeyProps {
@@ -31,9 +32,11 @@ function calculateAspectRatio(keyboardKey: KeyboardKey) {
 export function Key(props: IKeyProps) {
   const gridColumnSpan = calculateAspectRatio(props.character);
   const isWithShiftChar = KeyboardKeyMap[props.character].withShiftChar !== "";
+  const { editKeyToMap } = useConfig();
+
   return (
     <span
-      className={`bg-slate-200 overflow-hidden rounded-sm grow text-sm flex flex-col items-center justify-center shrink-0 gap-y-4 font-bold font-mono shadow-md border-2 border-b-8 border-l-4 border-r-4 border-gray-700 border-opacity-30 hover:cursor-pointer transition ${
+      className={`bg-slate-200 overflow-hidden rounded-sm grow text-sm flex flex-col items-center justify-center shrink-0 gap-y-4 font-bold font-mono shadow-md border-2 border-b-8 border-l-4 border-r-4 border-gray-700 border-opacity-30 select-none	hover:cursor-pointer hover:border-opacity-0 transition ${
         gridColumnSpan === 1 ? "aspect-square" : ""
       } `}
       style={{
@@ -41,6 +44,9 @@ export function Key(props: IKeyProps) {
         gap: `${isWithShiftChar ? "0.25rem" : "0"}`,
         backgroundColor: `${props.color ? props.color : "bg-slate-200"}`,
         color: `${props.textColor ? props.textColor : "bg-slate-800"}`,
+      }}
+      onClick={() => {
+        editKeyToMap(props.character);
       }}
     >
       {isWithShiftChar && (

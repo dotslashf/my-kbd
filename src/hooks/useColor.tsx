@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { ColorState, changeColor } from "@/store";
+import { ColorInitialState, StateType, changeColor } from "@/store";
 import React from "react";
 
-function useColor(groupName: "key" | "text" | "background") {
-  const color = useSelector((state: ColorState) => state.color[groupName]);
+function useColor(groupName: ColorInitialState) {
+  const color = useSelector((state: StateType) => state.color[groupName]);
   const [keyColor, setKeyColor] = React.useState(color);
   const dispatch = useDispatch();
 
