@@ -1,48 +1,52 @@
 import * as React from "react";
 import Keyboard from "./Keyboard";
-import { useSelector } from "react-redux";
-import { StateType } from "@/store";
-import ColorPicker from "./ColorPicker";
-import useColor from "@/hooks/useColor";
-import useConfig from "@/hooks/useConfig";
+import Disclosure from "./Disclosure";
 
 export interface ILayoutProps {}
 
 export function Layout(props: ILayoutProps) {
-  const { color, setColor } = useColor("keyPrimary");
-  const { color: backgroundColor, setColor: setBackgroundColor } =
-    useColor("background");
-  const { color: textColor, setColor: setTextColor } = useColor("text");
-  const { color: colorSecondary, setColor: setColorSecondary } =
-    useColor("keySecondary");
-
-  const { isEditing, toggleEditing } = useConfig();
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-20 w-full bg-gradient-to-bl from-sky-400 to-blue-500">
-      <label className="relative inline-flex items-center cursor-pointer">
-        <input
-          type="checkbox"
-          value=""
-          className="sr-only peer"
-          checked={isEditing}
-          onClick={() => {
-            toggleEditing();
-          }}
-          readOnly
-        />
-        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-        <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-          {isEditing ? "true" : "false"}
-        </span>
-      </label>
-      <div className="flex">
-        <ColorPicker color={color} setColor={setColor} />
-        <ColorPicker color={backgroundColor} setColor={setBackgroundColor} />
-        <ColorPicker color={textColor} setColor={setTextColor} />
-        <ColorPicker color={colorSecondary} setColor={setColorSecondary} />
+    <div className="flex">
+      <div
+        className={`flex top-0 left-0 z-40 w-96 h-screen p-4
+        overflow-y-auto transition-transform bg-white`}
+      >
+        <div className="flex flex-col w-full">
+          <h5
+            id="drawer-navigation-label"
+            className="text-base font-semibold text-gray-500 uppercase dark:text-slate-800"
+          >
+            Menu
+          </h5>
+          <button
+            type="button"
+            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center"
+          >
+            <svg
+              aria-hidden="true"
+              className="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+            <span className="sr-only">Close menu</span>
+          </button>
+          <div className="py-4 overflow-y-auto">
+            <div className="w-full">
+              <Disclosure />
+            </div>
+          </div>
+        </div>
       </div>
-      <Keyboard />
-    </main>
+      <main className="flex min-h-screen flex-col items-center justify-center p-8 w-full bg-gradient-to-bl from-sky-400 to-blue-500">
+        <Keyboard />
+      </main>
+    </div>
   );
 }

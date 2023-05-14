@@ -20,7 +20,7 @@ export function Keyboard(props: IKeyboardProps) {
 
   return (
     <div
-      className="flex flex-col gap-6 w-9/12 pr-4 pt-4 pl-4 pb-5 rounded-lg shadow-2xl border-b-[12px] border-gray-700 border-opacity-30"
+      className="flex flex-col gap-6 w-10/12 pr-4 pt-4 pl-4 pb-5 m-8 rounded-lg shadow-2xl border-b-[12px] border-gray-700 border-opacity-30"
       style={{
         backgroundColor: `${backgroundColor}`,
       }}

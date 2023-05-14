@@ -27,8 +27,8 @@ const ColorPicker = (props: Props) => {
   }, []);
 
   return (
-    <div className="mb-8" ref={colorPickerRef}>
-      <div className="flex h-12">
+    <div ref={colorPickerRef}>
+      <div className="flex h-12 my-2">
         <div
           className="h-full flex-shrink-0 w-12 border-slate-800 border-l border-t border-b rounded-l-md"
           style={{ backgroundColor: props.color }}
@@ -39,7 +39,7 @@ const ColorPicker = (props: Props) => {
         <input
           type="text"
           value={`#${props.color.replace("#", "")}`}
-          className="px-2 outline-none border-slate-800 border-r border-t border-b rounded-r-md"
+          className="w-full pl-2 outline-none border-slate-800 border-r border-t border-b rounded-r-md"
           maxLength={7}
           onKeyPress={(e) => {
             const validHexChars = /[0-9a-fA-F]/;
