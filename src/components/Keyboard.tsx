@@ -3,6 +3,7 @@ import { KeyboardRows } from "./KeyboardRows";
 import KeyboardRow from "./KeyboardRow";
 import Key from "./Key";
 import { Spacer } from "./Spacer";
+import { v4 as uuidv4 } from "uuid";
 
 export interface IKeyboardProps {}
 
@@ -13,19 +14,19 @@ export function Keyboard(props: IKeyboardProps) {
         <Key character={"Escape"} />
         <Spacer size={4} />
         {(["F1", "F2", "F3", "F4"] as const).map((char) => {
-          return <Key character={char} key={char} />;
+          return <Key character={char} key={`${char}-${uuidv4()}`} />;
         })}
         <Spacer size={2} />
         {(["F5", "F6", "F7", "F8"] as const).map((char) => {
-          return <Key character={char} key={char} />;
+          return <Key character={char} key={`${char}-${uuidv4()}`} />;
         })}
         <Spacer size={2} />
         {(["F9", "F10", "F11", "F12"] as const).map((char) => {
-          return <Key character={char} key={char} />;
+          return <Key character={char} key={`${char}-${uuidv4()}`} />;
         })}
         <Spacer size={1} />
         {(["PrintScreen", "ScrollLock", "Pause"] as const).map((char) => {
-          return <Key character={char} key={char} />;
+          return <Key character={char} key={`${char}-${uuidv4()}`} />;
         })}
       </KeyboardRow>
       <KeyboardRows />

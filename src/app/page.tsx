@@ -1,9 +1,13 @@
-import Keyboard from "@/components/Keyboard";
+"use client";
+
+import { Provider } from "react-redux";
+import store from "../store";
+import { Layout } from "@/components/Layout";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-20 w-full bg-gradient-to-bl from-sky-400 to-blue-500">
-      <Keyboard />
-    </main>
+    <Provider store={store}>
+      <Layout />
+    </Provider>
   );
 }
