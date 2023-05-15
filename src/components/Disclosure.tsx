@@ -56,7 +56,7 @@ export default function Disclosure() {
 
   return (
     <div className="w-full">
-      <div className="mx-auto w-full max-w-md rounded-2xl bg-white space-y-2">
+      <div className="mx-auto w-full rounded-2xl bg-white space-y-2">
         {disclosures.map(({ id, isOpen, buttonText, panelContent }) => (
           <React.Fragment key={id}>
             <button

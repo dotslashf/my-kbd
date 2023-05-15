@@ -36,7 +36,7 @@ export function Key(props: IKeyProps) {
 
   return (
     <span
-      className={`bg-slate-200 overflow-hidden rounded-sm grow text-[6px] lg:text-sm flex lg:flex-col items-center justify-center shrink-0 font-extrabold font-mono shadow-md lg:border-2 lg:border-b-8 lg:border-l-4 lg:border-r-4 lg:border-gray-700 lg:border-opacity-30 select-none hover:cursor-pointer lg:hover:border-opacity-0 transition
+      className={`relative bg-slate-200 overflow-hidden rounded-[1px] lg:rounded-sm grow shrink-0 font-extrabold font-mono shadow-md lg:border-2 lg:border-b-8 lg:border-l-4 lg:border-r-4 lg:border-gray-700 lg:border-opacity-30 select-none hover:cursor-pointer lg:hover:border-opacity-0 transition
       ${gridColumnSpan === 1 ? "aspect-square" : ""}
       ${isWithShiftChar ? "lg:gap-y-1 lg:gap-x-0 gap-x-1" : "gap-0"}
       `}
@@ -51,14 +51,14 @@ export function Key(props: IKeyProps) {
       }}
     >
       {isLegendShown && (
-        <>
+        <div className="lg:absolute lg:top-2 lg:left-2 overflow-hidden gap-x-0.5 text-[6px] md:text-[10px] lg:text-[14px] text-center flex items-center lg:items-start justify-center h-full lg:h-auto">
+          <span>{KeyboardKeyMap[props.character].label}</span>
           {isWithShiftChar && (
-            <span className="lg:text-sm text-[4px] top-0 left-0">
+            <span className="lg:ml-1 lg:top-0 text-[4px] md:text-[8px] lg:text-xs">
               {KeyboardKeyMap[props.character].withShiftChar}
             </span>
           )}
-          <span>{KeyboardKeyMap[props.character].label}</span>
-        </>
+        </div>
       )}
     </span>
   );

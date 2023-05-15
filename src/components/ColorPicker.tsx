@@ -40,7 +40,7 @@ const ColorPicker = (props: Props) => {
         <input
           type="text"
           value={`#${props.color.replace("#", "")}`}
-          className="w-full pl-2 outline-none border-slate-800 border-r border-t border-b rounded-r-md"
+          className="w-full pl-2 outline-none border-slate-800 border-r border-t border-b rounded-none rounded-r-md"
           maxLength={7}
           onKeyPress={(e) => {
             const validHexChars = /[0-9a-fA-F]/;
