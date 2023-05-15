@@ -36,12 +36,13 @@ export function Key(props: IKeyProps) {
 
   return (
     <span
-      className={`bg-slate-200 overflow-hidden rounded-sm grow text-sm flex flex-col items-center justify-center shrink-0 gap-y-4 font-bold font-mono shadow-md border-2 border-b-8 border-l-4 border-r-4 border-gray-700 border-opacity-30 select-none	hover:cursor-pointer hover:border-opacity-0 transition ${
-        gridColumnSpan === 1 ? "aspect-square" : ""
-      } `}
+      className={`bg-slate-200 overflow-hidden rounded-sm grow text-[6px] lg:text-sm flex lg:flex-col items-center justify-center shrink-0 lg:gap-y-4 font-bold font-mono shadow-md lg:border-2 lg:border-b-8 lg:border-l-4 lg:border-r-4 lg:border-gray-700 lg:border-opacity-30 select-none hover:cursor-pointer lg:hover:border-opacity-0 transition
+      ${gridColumnSpan === 1 ? "aspect-square" : ""}
+      ${isWithShiftChar ? "lg:gap-y-1 lg:gap-x-0 gap-x-1" : "gap-0"}
+      `}
       style={{
         gridColumn: `span ${gridColumnSpan * 4} / span ${gridColumnSpan * 4}`,
-        gap: `${isWithShiftChar ? "0.25rem" : "0"}`,
+        // gap: `${isWithShiftChar ? "0.25rem" : "0"}`,
         backgroundColor: `${props.color ? props.color : "bg-slate-200"}`,
         color: `${props.textColor ? props.textColor : "bg-slate-800"}`,
       }}
@@ -50,7 +51,9 @@ export function Key(props: IKeyProps) {
       }}
     >
       {isWithShiftChar && (
-        <span>{KeyboardKeyMap[props.character].withShiftChar}</span>
+        <span className="lg:text-sm text-[4px] top-0 left-0">
+          {KeyboardKeyMap[props.character].withShiftChar}
+        </span>
       )}
       <span>{KeyboardKeyMap[props.character].label}</span>
     </span>
