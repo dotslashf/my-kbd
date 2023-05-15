@@ -32,11 +32,11 @@ function calculateAspectRatio(keyboardKey: KeyboardKey) {
 export function Key(props: IKeyProps) {
   const gridColumnSpan = calculateAspectRatio(props.character);
   const isWithShiftChar = KeyboardKeyMap[props.character].withShiftChar !== "";
-  const { editKeyToMap } = useConfig();
+  const { editKeyToMap, isLegendShown } = useConfig();
 
   return (
     <span
-      className={`bg-slate-200 overflow-hidden rounded-sm grow text-[6px] lg:text-sm flex lg:flex-col items-center justify-center shrink-0 lg:gap-y-4 font-bold font-mono shadow-md lg:border-2 lg:border-b-8 lg:border-l-4 lg:border-r-4 lg:border-gray-700 lg:border-opacity-30 select-none hover:cursor-pointer lg:hover:border-opacity-0 transition
+      className={`bg-slate-200 overflow-hidden rounded-sm grow text-[6px] lg:text-sm flex lg:flex-col items-center justify-center shrink-0 font-extrabold font-mono shadow-md lg:border-2 lg:border-b-8 lg:border-l-4 lg:border-r-4 lg:border-gray-700 lg:border-opacity-30 select-none hover:cursor-pointer lg:hover:border-opacity-0 transition
       ${gridColumnSpan === 1 ? "aspect-square" : ""}
       ${isWithShiftChar ? "lg:gap-y-1 lg:gap-x-0 gap-x-1" : "gap-0"}
       `}
@@ -50,12 +50,16 @@ export function Key(props: IKeyProps) {
         editKeyToMap(props.character);
       }}
     >
-      {isWithShiftChar && (
-        <span className="lg:text-sm text-[4px] top-0 left-0">
-          {KeyboardKeyMap[props.character].withShiftChar}
-        </span>
+      {isLegendShown && (
+        <>
+          {isWithShiftChar && (
+            <span className="lg:text-sm text-[4px] top-0 left-0">
+              {KeyboardKeyMap[props.character].withShiftChar}
+            </span>
+          )}
+          <span>{KeyboardKeyMap[props.character].label}</span>
+        </>
       )}
-      <span>{KeyboardKeyMap[props.character].label}</span>
     </span>
   );
 }

@@ -12,6 +12,7 @@ interface ConfigState {
   };
   currentGroup: string;
   isEditing: boolean;
+  isLegendShown: boolean;
 }
 
 const colorSlice = createSlice({
@@ -34,8 +35,8 @@ const colorSlice = createSlice({
   }
 })
 
-const keyMapSlice = createSlice({
-  name: 'keyMap',
+const configSlice = createSlice({
+  name: 'config',
   initialState: {
     keyMap: {
       "keySecondary": [
@@ -46,6 +47,7 @@ const keyMapSlice = createSlice({
     },
     currentGroup: "keySecondary",
     isEditing: false,
+    isLegendShown: true,
   } as ConfigState,
   reducers: {
     editGroupKeys: (state, action: {
@@ -68,22 +70,25 @@ const keyMapSlice = createSlice({
     },
     toggleIsEditing: (state) => {
       state.isEditing = !state.isEditing
+    },
+    toggleIsLegendShown: (state) => {
+      state.isLegendShown = !state.isLegendShown
     }
   }
 })
 
 const { actions: colorSliceAction, reducer: colorSliceReducer } = colorSlice
-const { actions: keyMapSliceAction, reducer: keyMapSliceReducer } = keyMapSlice
+const { actions: configSliceAction, reducer: configSliceReducer } = configSlice
 
 const store = configureStore({
   reducer: {
     color: colorSliceReducer,
-    keyMap: keyMapSliceReducer
+    config: configSliceReducer
   }
 })
 
 export const { changeColor } = colorSliceAction;
-export const { editGroupKeys, changeCurrentGroup, toggleIsEditing } = keyMapSliceAction;
+export const { editGroupKeys, changeCurrentGroup, toggleIsEditing, toggleIsLegendShown } = configSliceAction;
 export type StateType = ReturnType<typeof store.getState>;
 
 export default store;

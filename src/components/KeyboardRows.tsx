@@ -16,7 +16,7 @@ export function KeyboardRows(props: IKeyboardRowsProps) {
   const { hashMapKeyAndColor } = useConfig();
 
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-1">
       {/* first row */}
       <KeyboardRow>
         {KeyboardTKLMapping.firstRow["1"].map((char) => {

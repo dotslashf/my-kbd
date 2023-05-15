@@ -1,20 +1,27 @@
 import { KeyboardKeys } from "@/const";
 import {
-  ColorInitialState,
   StateType,
   editGroupKeys,
   toggleIsEditing,
+  toggleIsLegendShown,
 } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 
 function useConfig() {
   const dispatch = useDispatch();
-  const isEditing = useSelector((state: StateType) => state.keyMap.isEditing);
-  const keyMap = useSelector((state: StateType) => state.keyMap.keyMap);
+  const isEditing = useSelector((state: StateType) => state.config.isEditing);
+  const keyMap = useSelector((state: StateType) => state.config.keyMap);
   const colors = useSelector((state: StateType) => state.color);
+  const isLegendShown = useSelector(
+    (state: StateType) => state.config.isLegendShown
+  );
 
   function toggleEditing() {
     dispatch(toggleIsEditing());
+  }
+
+  function toggleLegendShown() {
+    dispatch(toggleIsLegendShown());
   }
 
   function editKeyToMap(key: string) {
@@ -41,7 +48,9 @@ function useConfig() {
 
   return {
     isEditing,
+    isLegendShown,
     toggleEditing,
+    toggleLegendShown,
     editKeyToMap,
     keyMap,
     hashMapKeyAndColor,
