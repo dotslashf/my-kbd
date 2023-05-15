@@ -15,7 +15,7 @@ export function Layout(props: ILayoutProps) {
         </main>
         {/* sidebar */}
         <div
-          className={`flex lg:top-0 lg:left-0 z-40 lg:h-screen p-4 transition-transform bg-white`}
+          className={`flex lg:w-96 lg:top-0 lg:left-0 z-40 lg:h-screen p-4 transition-transform bg-white`}
         >
           <div className="flex flex-col w-full">
             <h5
